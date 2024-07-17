@@ -54,7 +54,28 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderCountries(countries, countriesContainer);
 
-  
+  select.addEventListener("change", (event) => {
+    const selectedValue = event.target.value;
+    if (selectedValue === "America") {
+      renderCountries(
+        countries.filter((country) => country.region === "Americas"),
+        countriesContainer
+      );
+    } else if (selectedValue === "Europe") {
+      renderCountries(
+        countries.filter((country) => country.region === "Europe"),
+        countriesContainer
+      );
+    } else if (selectedValue === "Asia") {
+      renderCountries(
+        countries.filter((country) => country.region === "Asia"),
+        countriesContainer
+      );
+    }
+    if (selectedValue === "All") {
+      renderCountries(countries, countriesContainer);
+    }
+  });
 
   input.addEventListener("input", async (event) => {
     const query = event.target.value.toLowerCase().trim();
